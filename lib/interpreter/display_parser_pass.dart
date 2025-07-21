@@ -13,6 +13,7 @@ class DisplayParserPass {
   static const _circleSignature = 'it.circle(';
   static const _lineSignature = 'it.line(';
   static const _horizontalLineSignature = 'it.horizontal_line(';
+  static const _verticalLineSignature = 'it.vertical_line(';
   static const _rectangleSignature = 'it.rectangle(';
   static const _triangleSignature = 'it.triangle(';
   static const _printSignature = 'it.print(';
@@ -68,6 +69,20 @@ class DisplayParserPass {
           result.add(
             ParsedDisplayObject(
               DisplayObjectTypes.horizontalLine,
+              variables,
+              filled,
+            ),
+          );
+
+        case final verticalLine
+            when verticalLine.startsWith(_verticalLineSignature):
+          final variables = parseVariables(
+            codeLine: verticalLine,
+            signature: _verticalLineSignature,
+          );
+          result.add(
+            ParsedDisplayObject(
+              DisplayObjectTypes.verticalLine,
               variables,
               filled,
             ),

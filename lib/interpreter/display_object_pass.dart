@@ -9,6 +9,7 @@ import 'package:esphome_display_editor/objects/printf.dart';
 import 'package:esphome_display_editor/objects/rectangle.dart';
 import 'package:esphome_display_editor/objects/regular_polygon.dart';
 import 'package:esphome_display_editor/objects/triangle.dart';
+import 'package:esphome_display_editor/objects/vertical_line.dart';
 
 /// Transforms all render calls to render objects.
 class DisplayObjectPass {
@@ -42,6 +43,13 @@ class DisplayObjectPass {
           case DisplayObjectTypes.horizontalLine:
             result.add(
               HorizontalLine.fromParsedDisplayObject(
+                parsedDisplayObject,
+                variableToValueMapping,
+              ),
+            );
+          case DisplayObjectTypes.verticalLine:
+            result.add(
+              VerticalLine.fromParsedDisplayObject(
                 parsedDisplayObject,
                 variableToValueMapping,
               ),
